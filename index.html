@@ -194,6 +194,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -222,6 +232,180 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/新建文本文档/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ankin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ankin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/10/新建文本文档/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T00:08:39+08:00">
+                2018-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  245
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###乱码决解cmd是gbk  数据库是uft8<br> <img src="https://a.photo/images/2018/06/10/image67128fccd4200679.png" alt="image67128fccd4200679.png"><br>Php是utf8编码<br>Php中连接mysql需要怎么做<br>Set name utf8<br>设置连接字符编码</p>
+<p>###sql可以换行<br>遇到；时语句结束<br>Show databases；</p>
+<p>###<br><a href="https://a.photo/image/m8yv" target="_blank" rel="noopener"><img src="https://a.photo/images/2018/06/10/image99c8a76981cbbd5e.png" alt="image99c8a76981cbbd5e.png"></a></p>
+<p>4.create tale class(<br>Id int primary key auto_increment,<br>Sname varchar(10) not null default ‘ ‘,<br>Grender char(1) not null default ‘’,<br>Company varchar(20) not null default ‘’,<br>Salary decimal(6,2) not null default 0.00，<br>Fanbu smallint not null default 0</p>
+<blockquote>
+<p>engine myisam charset uft8;</p>
+</blockquote>
+<p> </p>
+<p>没有选择数据库1046；</p>
+<ol start="5">
+<li>Insert into class<br>(id,sname,gender,company,salary,fanbu)<br>Values<br>(1,’张山’,’男’,’百度’,8888.77,234);</li>
+</ol>
+<p>6插入部分列</p>
+<p>Id是自增性<br>Fanbu是0  前面设置为0；</p>
+<p>增加多行<br>要用，来隔开</p>
+<p>7.练习改 updata<br>Update改的要素：<br>Update class<br>Set fanbu=300<br>Where id=6；</p>
+<p>//where 用其他来修改的话可能会有重复；</p>
+<p>多重条件and</p>
+<p> 全部都会被改掉  where 1 都为真所以取出了所有行</p>
+<p>8删除的学习（删除整行，不存在删一行中的某几列</p>
+<p>Delete from class where salary&gt;8888</p>
+<p>Delete from class where sarlary&gt;8000 and gender=’女’;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -346,6 +530,7 @@
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p><a href="https://a.photo/image/mnCn" target="_blank" rel="noopener"><img src="https://a.photo/images/2018/06/10/1f73a763.jpg" alt="1f73a763.jpg"></a></p>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
@@ -430,7 +615,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +681,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共78字</span>
+  <span class="post-count">博客全站共323字</span>
 </div>
         
 
