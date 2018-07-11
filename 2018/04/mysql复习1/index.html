@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础知识:1.数据库的连接mysql -u -p -h-u 用户名-p 密码-h host主机 2.库级知识2.1 显示数据库: show databases;2.2 选择数据库: use dbname;2.3 创建数据库: create database dbname charset utf8;2.3 删除数据库: drop database dbname;3: 表级操作:3.1 显示库下面的表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql复习1">
+<meta property="og:url" content="https://pb4681.github.io/2018/04/mysql复习1/index.html">
+<meta property="og:site_name" content="Ankin">
+<meta property="og:description" content="基础知识:1.数据库的连接mysql -u -p -h-u 用户名-p 密码-h host主机 2.库级知识2.1 显示数据库: show databases;2.2 选择数据库: use dbname;2.3 创建数据库: create database dbname charset utf8;2.3 删除数据库: drop database dbname;3: 表级操作:3.1 显示库下面的表">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-11T08:56:17.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql复习1">
+<meta name="twitter:description" content="基础知识:1.数据库的连接mysql -u -p -h-u 用户名-p 密码-h host主机 2.库级知识2.1 显示数据库: show databases;2.2 选择数据库: use dbname;2.3 创建数据库: create database dbname charset utf8;2.3 删除数据库: drop database dbname;3: 表级操作:3.1 显示库下面的表">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Ankin'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pb4681.github.io/2018/04/mysql复习1/"/>
+
+
+
+
+
+  <title>mysql复习1 | Ankin</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ankin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pb4681.github.io/2018/04/mysql复习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ankin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ankin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql复习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T16:55:58+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  471
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识:"></a>基础知识:</h1><h2 id="1-数据库的连接"><a href="#1-数据库的连接" class="headerlink" title="1.数据库的连接"></a>1.数据库的连接</h2><p>mysql -u -p -h<br>-u 用户名<br>-p 密码<br>-h host主机</p>
+<h2 id="2-库级知识"><a href="#2-库级知识" class="headerlink" title="2.库级知识"></a>2.库级知识</h2><h3 id="2-1-显示数据库-show-databases"><a href="#2-1-显示数据库-show-databases" class="headerlink" title="2.1 显示数据库: show databases;"></a>2.1 显示数据库: show databases;</h3><h3 id="2-2-选择数据库-use-dbname"><a href="#2-2-选择数据库-use-dbname" class="headerlink" title="2.2 选择数据库: use dbname;"></a>2.2 选择数据库: use dbname;</h3><h3 id="2-3-创建数据库-create-database-dbname-charset-utf8"><a href="#2-3-创建数据库-create-database-dbname-charset-utf8" class="headerlink" title="2.3 创建数据库: create database dbname charset utf8;"></a>2.3 创建数据库: create database dbname charset utf8;</h3><h3 id="2-3-删除数据库-drop-database-dbname"><a href="#2-3-删除数据库-drop-database-dbname" class="headerlink" title="2.3 删除数据库: drop database dbname;"></a>2.3 删除数据库: drop database dbname;</h3><h2 id="3-表级操作"><a href="#3-表级操作" class="headerlink" title="3: 表级操作:"></a>3: 表级操作:</h2><h3 id="3-1-显示库下面的表"><a href="#3-1-显示库下面的表" class="headerlink" title="3.1 显示库下面的表"></a>3.1 显示库下面的表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-查看表的结构"><a href="#3-2-查看表的结构" class="headerlink" title="3.2 查看表的结构:"></a>3.2 查看表的结构:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc tableName;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-查看表的创建过程"><a href="#3-3-查看表的创建过程" class="headerlink" title="3.3 查看表的创建过程:"></a>3.3 查看表的创建过程:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table  tableName;</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-创建表"><a href="#3-4-创建表" class="headerlink" title="3.4 创建表:"></a>3.4 创建表:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table tbName (</span><br><span class="line">列名称1　列类型　[列参数]　[not null default ],</span><br><span class="line">....列2...</span><br><span class="line">....</span><br><span class="line">列名称N　列类型　[列参数]　[not null default ]</span><br><span class="line">)engine myisam/innodb charset utf8/gbk</span><br></pre></td></tr></table></figure>
+<h3 id="3-4的例子"><a href="#3-4的例子" class="headerlink" title="3.4的例子:"></a>3.4的例子:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table user (</span><br><span class="line">    id int auto_increment,</span><br><span class="line">    name varchar(20) not null default &apos;&apos;,</span><br><span class="line">    age tinyint unsigned not null default 0,</span><br><span class="line">   index id (id)</span><br><span class="line">   )engine=innodb charset=utf8;</span><br><span class="line">注:innodb是表引擎,也可以是myisam或其他,但最常用的是myisam和innodb,</span><br><span class="line">charset 常用的有utf8,gbk;</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-修改表"><a href="#3-5-修改表" class="headerlink" title="3.5 修改表"></a>3.5 修改表</h3><h3 id="3-5-1-修改表之增加列"><a href="#3-5-1-修改表之增加列" class="headerlink" title="3.5.1   修改表之增加列:"></a>3.5.1   修改表之增加列:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table tbName </span><br><span class="line">add 列名称１　列类型　[列参数]　[not null default ]　#(add之后的旧列名之后的语法和创建表时的列声明一样)</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-2-修改表之修改列"><a href="#3-5-2-修改表之修改列" class="headerlink" title="3.5.2   修改表之修改列"></a>3.5.2   修改表之修改列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alter table tbName</span><br><span class="line">change 旧列名  新列名  列类型　[列参数]　[not null default ]</span><br><span class="line">(注:旧列名之后的语法和创建表时的列声明一样)</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-3-修改表之减少列"><a href="#3-5-3-修改表之减少列" class="headerlink" title="3.5.3   修改表之减少列:"></a>3.5.3   修改表之减少列:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table tbName </span><br><span class="line">drop 列名称;</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-4-修改表之增加主键"><a href="#3-5-4-修改表之增加主键" class="headerlink" title="3.5.4   修改表之增加主键"></a>3.5.4   修改表之增加主键</h3><figure class="highlight plain"><figcaption><span>table tbName add primary key(主键所在列名);</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例:alter table goods add primary key(id)</span><br><span class="line">该例是把主键建立在id列上</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-5-修改表之删除主键"><a href="#3-5-5-修改表之删除主键" class="headerlink" title="3.5.5   修改表之删除主键"></a>3.5.5   修改表之删除主键</h3><p>alter table tbName　drop primary key;</p>
+<h3 id="3-5-6-修改表之增加索引"><a href="#3-5-6-修改表之增加索引" class="headerlink" title="3.5.6   修改表之增加索引"></a>3.5.6   修改表之增加索引</h3><p>alter table tbName add [unique|fulltext] index 索引名(列名);</p>
+<h3 id="3-5-7-修改表之删除索引"><a href="#3-5-7-修改表之删除索引" class="headerlink" title="3.5.7   修改表之删除索引"></a>3.5.7   修改表之删除索引</h3><p>alter table tbName drop index 索引名;</p>
+<h3 id="3-5-8-清空表的数据"><a href="#3-5-8-清空表的数据" class="headerlink" title="3.5.8   清空表的数据"></a>3.5.8   清空表的数据</h3><p>truncate tableName;</p>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>mysql复习1</a></p>
+  <p><span>文章作者:</span>Ankin</a></p>
+  <p><span>发布时间:</span>2018年04月11日 - 16:55:58</p>
+  <p><span>最后更新:</span>2018年07月11日 - 16:56:17</p>
+  <p><span>原始链接:</span><a href="/2018/04/mysql复习1/" title="mysql复习1">https://pb4681.github.io/2018/04/mysql复习1/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pb4681.github.io/2018/04/mysql复习1/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+	</div>
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/Linux基础：文件系统1/" rel="prev" title="Linux基础：文件系统1">
+                Linux基础：文件系统1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="gitalk-container"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Ankin" />
+            
+              <p class="site-author-name" itemprop="name">Ankin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/pb4681" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据库的连接"><span class="nav-number">1.1.</span> <span class="nav-text">1.数据库的连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-库级知识"><span class="nav-number">1.2.</span> <span class="nav-text">2.库级知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-显示数据库-show-databases"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 显示数据库: show databases;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-选择数据库-use-dbname"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 选择数据库: use dbname;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-创建数据库-create-database-dbname-charset-utf8"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 创建数据库: create database dbname charset utf8;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-删除数据库-drop-database-dbname"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.3 删除数据库: drop database dbname;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-表级操作"><span class="nav-number">1.3.</span> <span class="nav-text">3: 表级操作:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-显示库下面的表"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 显示库下面的表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-查看表的结构"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 查看表的结构:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-查看表的创建过程"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 查看表的创建过程:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-创建表"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 创建表:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4的例子"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.4的例子:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-修改表"><span class="nav-number">1.3.6.</span> <span class="nav-text">3.5 修改表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-修改表之增加列"><span class="nav-number">1.3.7.</span> <span class="nav-text">3.5.1   修改表之增加列:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-修改表之修改列"><span class="nav-number">1.3.8.</span> <span class="nav-text">3.5.2   修改表之修改列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-3-修改表之减少列"><span class="nav-number">1.3.9.</span> <span class="nav-text">3.5.3   修改表之减少列:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-4-修改表之增加主键"><span class="nav-number">1.3.10.</span> <span class="nav-text">3.5.4   修改表之增加主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-5-修改表之删除主键"><span class="nav-number">1.3.11.</span> <span class="nav-text">3.5.5   修改表之删除主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-6-修改表之增加索引"><span class="nav-number">1.3.12.</span> <span class="nav-text">3.5.6   修改表之增加索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-7-修改表之删除索引"><span class="nav-number">1.3.13.</span> <span class="nav-text">3.5.7   修改表之删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-8-清空表的数据"><span class="nav-number">1.3.14.</span> <span class="nav-text">3.5.8   清空表的数据</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ankin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<!-- END LOCAL -->
+    
+      <script type="text/javascript">
+      function renderGitalk(){
+        var gitalk = new Gitalk({
+			id: decodeURI(window.location.pathname),
+            owner: 'pb4681',
+            repo: 'pb4681.github.io',
+            clientID: '65150289f32b97935c71',
+            clientSecret: '7a665a73481936ddb866e8d189198b351df02efc',
+            admin: 'pb4681',
+            
+              distractionFreeMode: 'true'
+            
+            });
+        gitalk.render('gitalk-container');
+      }
+      renderGitalk();
+      </script>
+    
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
