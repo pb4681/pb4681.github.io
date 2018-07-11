@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/Linux基础：文件系统/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/uncategorized/Linux基础：文件系统1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ankin">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/uncategorized/Linux基础：文件系统/" itemprop="url">Linux基础：文件系统</a></h1>
+                <a class="post-title-link" href="/uncategorized/Linux基础：文件系统1/" itemprop="url">Linux基础：文件系统1</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T20:48:47+08:00">
-                2018-05-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T13:38:22+08:00">
+                2018-07-11
               </time>
             
 
@@ -292,7 +292,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,212
+                  762
                 </span>
               
 
@@ -319,13 +319,18 @@
       
         
           
-          我们知道不同的操作系统所使用的文件系统是不一样的。举例来说，Windows 98 以前所使用的是文件系统是 FAT，Windows 2000 以后的版本有所谓的 NTFS 文件系统。至于 Linux 的正规文件系统则为 Ext2（Linux second extended file system，Ext2fs）。之后又出现了改进版的 Ext3 和 Ext4 ，总体上变化不大。
-文件系统的对比我们经常听说 Windows 需要磁盘碎片整理，而 Linux 却不需要。这是为什么呢？
-我们可以先看看 Ext2 文件系统的数据访问方式，如下图所示。假设一个文件的属性和权限信息是存放在 3 号的 ino
+          传值是对的呀…
+既然知道传值对了，id的作用也清楚了，难道是GitHub在搞事情？
+去新建一个label，把值复制进去…
+卧槽，真的有长度限制！
+那就简单了，只取title做id，平时写标题不要太浪~~~
+1id: ‘&lt;%= page.title %&gt;’2018-02-25更新最近在整理项目开发的系列文章，发现标题不是想不浪就能克制得住的哇。评论中iHTCboy的解决方法很有通用性，就采用他的方法好了。
+主要思想是用时间作id
+1id: ‘&lt;%= page.date %&gt;’这样传给github的标签是定长的，不会超过长度限制。同时date可以自己写，只要精确到分秒，区分
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/uncategorized/Linux基础：文件系统/#more" rel="contents">
+            <a class="btn" href="/uncategorized/Linux基础：文件系统1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
