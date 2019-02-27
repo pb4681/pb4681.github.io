@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
   color: #555;
@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h2,
 h3,
@@ -487,13 +487,13 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
-  color: #eaeaea;
-  background: #000;
+  color: #4d4d4c;
+  background: #f7f7f7;
   line-height: 1.6;
 }
 pre,
 code {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", monospace;
+  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
@@ -508,7 +508,7 @@ pre {
 }
 pre code {
   padding: 0;
-  color: #eaeaea;
+  color: #4d4d4c;
   background: none;
   text-shadow: none;
 }
@@ -531,7 +531,7 @@ pre code {
 }
 .highlight figcaption {
   font-size: 1em;
-  color: #eaeaea;
+  color: #4d4d4c;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -545,23 +545,23 @@ pre code {
 }
 .highlight figcaption a {
   float: right;
-  color: #eaeaea;
+  color: #4d4d4c;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #eaeaea;
+  border-bottom-color: #4d4d4c;
 }
 .highlight .gutter pre {
   padding-left: 10px;
   padding-right: 10px;
-  color: #666;
+  color: #869194;
   text-align: right;
-  background-color: #292929;
+  background-color: #eff2f3;
 }
 .highlight .code pre {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #000;
+  background-color: #f7f7f7;
 }
 .highlight .line {
   height: 20px;
@@ -579,16 +579,16 @@ pre code {
   border: none;
 }
 pre .deletion {
-  background: #008000;
+  background: #fdd;
 }
 pre .addition {
-  background: #800000;
+  background: #dfd;
 }
 pre .meta {
-  color: #c397d8;
+  color: #8959a8;
 }
 pre .comment {
-  color: #969896;
+  color: #8e908c;
 }
 pre .variable,
 pre .attribute,
@@ -602,7 +602,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #d54e53;
+  color: #c82829;
 }
 pre .number,
 pre .preprocessor,
@@ -611,7 +611,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #e78c45;
+  color: #f5871f;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -624,11 +624,11 @@ pre .xml .cdata,
 pre .special,
 pre .number,
 pre .formula {
-  color: #b9ca4a;
+  color: #718c00;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #70c0b1;
+  color: #3e999f;
 }
 pre .function,
 pre .python .decorator,
@@ -638,11 +638,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #7aa6da;
+  color: #4271ae;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c397d8;
+  color: #8959a8;
 }
 .full-image.full-image.full-image.full-image {
   border: none;
@@ -1057,20 +1057,24 @@ pre .javascript .function {
   margin: 10px;
 }
 .back-to-top {
-  display: none;
-  margin: 20px -10px -20px;
-  background: #fff;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: -100px;
+  right: 30px;
+  z-index: 1050;
+  padding: 0 6px;
+  width: 24px;
+  background: #222;
   font-size: 12px;
   opacity: 1;
+  color: #fff;
   cursor: pointer;
   text-align: center;
   -webkit-transform: translateZ(0);
+  transition-property: bottom;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
-}
-.back-to-top:hover {
-  opacity: 0.8;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .back-to-top {
@@ -1083,7 +1087,7 @@ pre .javascript .function {
   }
 }
 .back-to-top.back-to-top-on {
-  display: block;
+  bottom: 19px;
 }
 .header {
   background: transparent;
@@ -1127,7 +1131,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1215,7 +1219,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1493,7 +1497,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1604,8 +1608,9 @@ pre .javascript .function {
 }
 .posts-expand .post-eof {
   display: block;
-  width: 0%;
-  height: 0px;
+  margin: 80px auto 60px;
+  width: 8%;
+  height: 1px;
   background: #ccc;
   text-align: center;
 }
@@ -1652,57 +1657,6 @@ pre .javascript .function {
 }
 .rtl.post-title {
   font-family: UKIJ Ekran;
-}
-.my_post_copyright {
-  width: 85%;
-  max-width: 45em;
-  margin: 2.8em auto 0;
-  padding: 0.5em 1em;
-  border: 1px solid #d3d3d3;
-  font-size: 0.93rem;
-  line-height: 1.6em;
-  word-break: break-all;
-  background: rgba(255,255,255,0.4);
-}
-.my_post_copyright p {
-  margin: 0;
-}
-.my_post_copyright span {
-  display: inline-block;
-  width: 5.2em;
-  color: #333;
-  font-weight: bold;
-}
-.my_post_copyright .raw {
-  margin-left: 1em;
-  width: 5em;
-}
-.my_post_copyright a {
-  color: #808080;
-  border-bottom: 0;
-}
-.my_post_copyright a:hover {
-  color: #0593d3;
-  text-decoration: underline;
-}
-.my_post_copyright:hover .fa-clipboard {
-  color: #000;
-}
-.my_post_copyright .post-url:hover {
-  font-weight: normal;
-}
-.my_post_copyright .copy-path {
-  margin-left: 1em;
-  width: 1em;
-}
-@media (max-width: 767px) {
-  .my_post_copyright .copy-path {
-    display: none;
-  }
-}
-.my_post_copyright .copy-path:hover {
-  color: #808080;
-  cursor: pointer;
 }
 .sidebar {
   position: fixed;
@@ -1868,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bfc655;
+  background: #1a6aff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2672,7 +2626,7 @@ embed {
     padding: 0;
     background: #fff;
     border-bottom: 1px solid #ddd;
-    z-index: 1050;
+    z-index: 1030;
   }
 }
 @media (max-width: 767px) {
