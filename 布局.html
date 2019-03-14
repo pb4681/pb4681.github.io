@@ -443,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/这是一篇测试文章也是测试时测试.html" rel="prev" title="这是一篇测试文章也是测试时测试">
-                这是一篇测试文章也是测试时测试 <i class="fa fa-chevron-right"></i>
+              <a href="/这是一篇测试.html" rel="prev" title="这是一篇测试">
+                这是一篇测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -768,7 +768,7 @@
           repo: 'pb4681.github.io',
           owner: 'pb4681',
           admin: ['pb4681'],
-          id: md5(window.location.pathname),
+          id: decodeURI(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           

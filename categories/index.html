@@ -602,7 +602,7 @@
           repo: 'pb4681.github.io',
           owner: 'pb4681',
           admin: ['pb4681'],
-          id: md5(window.location.pathname),
+          id: decodeURI(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           

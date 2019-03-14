@@ -453,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/这是一篇测试文章也是测试时测试.html" rel="next" title="这是一篇测试文章也是测试时测试">
-                <i class="fa fa-chevron-left"></i> 这是一篇测试文章也是测试时测试
+              <a href="/布局.html" rel="next" title="三栏布局之鸡翅布局、圣杯布局和flex弹性布局">
+                <i class="fa fa-chevron-left"></i> 三栏布局之鸡翅布局、圣杯布局和flex弹性布局
               </a>
             
           </div>
@@ -462,6 +462,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/这是一篇测试文章也是测试时测试.html" rel="prev" title="这是一篇测试文章也是测试时测试">
+                这是一篇测试文章也是测试时测试 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -784,7 +788,7 @@
           repo: 'pb4681.github.io',
           owner: 'pb4681',
           admin: ['pb4681'],
-          id: md5(window.location.pathname),
+          id: decodeURI(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           
